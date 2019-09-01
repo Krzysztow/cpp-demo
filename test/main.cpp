@@ -1,6 +1,6 @@
-#include <iostream>
+#include "gmock/gmock.h"
 
-int main() 
+TEST(TrivialTests, CheckThatOneIsOne)
 {
-  std::cout << "Hello demo tests" << std::endl;
+  ASSERT_EQ(1, 1);
 }
