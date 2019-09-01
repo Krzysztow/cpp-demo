@@ -1,0 +1,1 @@
+add_executable(cpp-demo main.cpp)

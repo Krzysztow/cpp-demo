@@ -1,0 +1,1 @@
+add_executable(cpp-demo-tests main.cpp)
