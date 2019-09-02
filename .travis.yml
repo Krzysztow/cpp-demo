@@ -5,6 +5,9 @@ addons:
     packages: 
       - python3
 
+before_script:
+  - pip3 install conan
+
 compiler:
 - clang
 - gcc
