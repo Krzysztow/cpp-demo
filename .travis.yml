@@ -4,9 +4,14 @@ addons:
   apt:
     packages: 
       - python3
+      - python3-pip
 
 before_script:
-  - pip3 install conan
+  - pip3 install --user conan
+
+env:
+  global:
+    - CONAN_PATH=/home/${USER}/.local/bin/conan
 
 compiler:
 - clang
