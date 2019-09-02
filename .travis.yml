@@ -1,23 +1,18 @@
-language: cpp
+os: linux
+language: python
+python: "3.7"
 
-addons:
-  apt:
-    packages: 
-      - python3
-      - python3-pip
-      - python3-setuptools
-      - python3-wheel
-
-before_script:
-  - pip3 install --user conan
-
-env:
-  global:
-    - CONAN_PATH=/home/${USER}/.local/bin/conan
+compiler:
+  - gcc
+  - clang
+  
+install:
+  - pip install conan
+  
+script:
+  - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
+  - ctest .
 
 compiler:
 - clang
 - gcc
-
-script:
-  - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
