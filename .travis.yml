@@ -20,5 +20,4 @@ compiler:
 - gcc
 
 script:
-  - ls
-  - mkdir build && cd build && cmake --configure .. && cmake --build .
+  - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
