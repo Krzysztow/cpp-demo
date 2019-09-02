@@ -1,0 +1,10 @@
+language: cpp
+
+addons:
+  apt:
+    packages: 
+      - python3
+
+compiler:
+- clang
+- gcc
