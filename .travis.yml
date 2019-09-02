@@ -13,7 +13,7 @@ script:
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
   - conan remote list
   - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
-  - ctest .
+  - ctest --verbose .
 
 compiler:
 - clang
