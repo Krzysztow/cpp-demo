@@ -15,7 +15,6 @@ jobs:
         - conan remote list
         - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
         - ctest --verbose .
-
     - stage: build
       os: windows
       env:
@@ -28,6 +27,8 @@ jobs:
         - pip install conan
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
         - conan remote list
+        - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
+        - ctest --verbose .
 
 
 
