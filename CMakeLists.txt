@@ -11,7 +11,7 @@ endif()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_check(REQUIRED)
 conan_cmake_run(REQUIRES 
-                  gtest/1.8.0@conan/stable
+                  gtest/1.8.1@bincrafters/stable
                 BASIC_SETUP 
                 CMAKE_TARGETS
                 BUILD missing)
