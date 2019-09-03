@@ -22,8 +22,8 @@ jobs:
       install:
         - choco install python3 --pre
         - choco install visualstudio2017buildtools
-        - "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
-        - "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -test
+        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
+        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -test
         - pip install conan
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
         - conan remote list
