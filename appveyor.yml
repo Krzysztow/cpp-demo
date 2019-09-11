@@ -12,7 +12,6 @@ install:
 
     pip.exe install conan
 
-    # Create the conan data directory
     conan user
     
     conan --version
