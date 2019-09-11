@@ -1,20 +1,38 @@
-os: linux
 language: python
 python: "3.7"
 
-compiler:
-  - gcc
-  - clang
-  
-install:
-  - pip install conan
-  
-script:
-  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-  - conan remote list
-  - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
-  - ctest --verbose .
+jobs:
+  include:
+    - stage: build
+      os: linux
+      compiler:
+        - clang
+        - gcc
+      install: 
+        - pip install conan
+      script:
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+        - conan remote list
+        - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
+        - ctest --verbose .
+    - stage: build
+      os: windows
+      env:
+        - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+      install:
+        - choco install python3 --pre
+        - choco install visualstudio2017buildtools
+        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
+        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -test
+        - pip install conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+        - conan remote list
+        - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
+        - ctest --verbose .
 
-compiler:
-- clang
-- gcc
+
+
+
+
+# choco install visualstudio2019buildtools
+# 
