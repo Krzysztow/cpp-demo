@@ -28,5 +28,3 @@ build_script:
 
 test_script:
 - cmd: ctest -C Debug
-
-python -m pip install --upgrade pip
