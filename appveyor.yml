@@ -10,7 +10,7 @@ install:
     
     python -m pip install -q --upgrade pip
 
-    pip.exe install conan
+    pip.exe install -q conan
 
     conan user
     
