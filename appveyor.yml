@@ -8,7 +8,7 @@ install:
 
     set PATH=%PATH%;%PYTHON%/Scripts/
     
-    python -m pip install --upgrade pip
+    python -m pip install -q --upgrade pip
 
     pip.exe install conan
 
