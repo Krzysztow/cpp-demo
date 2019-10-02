@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.0)
 project (cpp-demo)
 
 #https://docs.conan.io/en/latest/howtos/cmake_launch.html
