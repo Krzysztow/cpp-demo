@@ -20,16 +20,9 @@ jobs:
       language: shell
       install:
         - brew update --quiet
-        - | # installing as bundle to prevent failure for existing packages
-          tail - <<-EOS
-          brew "python"
-          brew "cmake"
-          EOS
-        - | # installing as bundle to prevent failure for existing packages
-          brew bundle --file=/dev/stdin <<-EOS
-          brew "python"
-          brew "cmake"
-          EOS
+        - echo 'brew "python"' > ./Brewfile
+        - echo 'brew "cmake"' >> ./Brewfile
+        - brew bundle --file=./Brewfile # installs python3 and cmake
         - pip install conan # install conan, python already needed
         - cmake --version
         - conan --version
