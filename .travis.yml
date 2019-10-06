@@ -23,6 +23,7 @@ jobs:
       install:
         - choco install python3 --pre
         - choco install visualstudio2017buildtools
+        - find /c/Program\ Files\ \(x86\)/ -name "VsDevCmd*"
         - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
         - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -test
         - pip install conan
