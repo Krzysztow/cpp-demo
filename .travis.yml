@@ -10,6 +10,9 @@ jobs:
         - gcc
       install: 
         - pip install conan
+        - | # there are other options installing cmake
+        curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-3.14.7-Linux-x86_64.tar.gz | 
+          sudo tar -xzC /opt
         - sudo apt install cmake
       script:
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
