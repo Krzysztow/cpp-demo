@@ -17,9 +17,10 @@ jobs:
         - ctest --verbose .
     - stage: build
       os: osx
-      language: python
-      python: "3.7"
+      language: shell
       install:
+        - brew search python
+        - brew install python
         - pip install conan
       script:
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
