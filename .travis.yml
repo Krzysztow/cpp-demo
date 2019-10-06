@@ -10,7 +10,7 @@ jobs:
         - gcc
       install: 
         - pip install conan
-        - apt install cmake
+        - sudo apt install cmake
       script:
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
         - conan remote list
