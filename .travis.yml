@@ -1,4 +1,3 @@
-
 jobs:
   include:
     - stage: build
@@ -10,9 +9,7 @@ jobs:
         - gcc
       install: 
         - pip install conan
-        - | # there are other options installing cmake
-        curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-3.14.7-Linux-x86_64.tar.gz | 
-          sudo tar -xzC /opt
+        - curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-3.14.7-Linux-x86_64.tar.gz | sudo tar -xzC /opt
       script:
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
         - conan remote list
@@ -27,7 +24,7 @@ jobs:
           brew bundle --file=/dev/stdin <<-EOS
           brew "python"
           brew "cmake"
-EOS
+          EOS
         - pip install conan # install conan, python already needed
         - cmake --version
         - conan --version
