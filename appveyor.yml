@@ -3,28 +3,21 @@ image:
 clone_folder: c:\projects\source
 
 install:
-- cmd: >-
-    echo "Downloading conan..."
-
-    set PATH=%PATH%;%PYTHON%/Scripts/
-    
-    python -m pip install -q --upgrade pip
-
-    pip.exe install -q conan
-
-    conan user
-    
-    conan --version
+- cmd:
+    - echo "Downloading conan..."
+    - set PATH=%PATH%;%PYTHON%/Scripts/
+    - python -m pip install -q --upgrade pip
+    - pip.exe install -q conan
+    - conan user
+    - conan --version
 
 build_script:
-- cmd: >-
-    mkdir build
-
-    cd build
-
-    cmake c:\projects\source -G "Visual Studio 15"
-
-    cmake --build . --config "Debug"
-
+- cmd:
+    - mkdir build
+    - cd build
+    - cmake c:\projects\source -G "Visual Studio 15"
+    - cmake --build . --config "Debug"
+    
 test_script:
-- cmd: ctest -C Debug
+- cmd: 
+    - ctest -C Debug
