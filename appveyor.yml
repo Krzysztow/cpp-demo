@@ -3,7 +3,7 @@ image:
 clone_folder: c:\projects\source
 
 install:
-  - ps: >-
+  - cmd: >-
       echo "Downloading conan..."
       set PATH=%PATH%;%PYTHON%/Scripts/
       python -m pip install -q --upgrade pip
@@ -12,11 +12,11 @@ install:
       conan --version
 
 build_script:
-  - ps: >-
+  - cmd: >-
       mkdir build
       cd build
       cmake c:\projects\source -G "Visual Studio 15"
       cmake --build . --config "Debug"
     
 test_script:
-  - ps: ctest -C Debug
+  - cmd: ctest -C Debug
