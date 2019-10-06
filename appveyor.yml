@@ -6,7 +6,7 @@ install:
   - cmd: >-
       echo "Downloading conan..."
       
-      choco install python3 --pre
+      # choco install python3 --pre
       
       pip.exe install -q conan
       
