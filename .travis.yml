@@ -16,17 +16,12 @@ jobs:
         - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
         - ctest --verbose .
     - stage: build
-      os: windows
-      language : shell
-      env:
-        - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+      os: osx
+      language: python
+      python: "3.7"
       install:
-        - choco install python3 --pre
-        - choco install visualstudio2017buildtools
-        - find /c/Program\ Files\ \(x86\)/ -name "VsDevCmd*"
-        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -host_arch=amd64 -arch=amd64
-        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\VsDevCmd.bat" -test
         - pip install conan
+      script:
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
         - conan remote list
         - mkdir build && cd build && cmake --configure .. -DCMAKE_BUILD_TYPE=debug && cmake --build .
