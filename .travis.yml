@@ -21,7 +21,7 @@ jobs:
       language: shell
       install:
         - | # installing as bundle to prevent failure for existing packages
-          - brew bundle --file=- <<-EOS
+          - brew bundle --file=/dev/stdin <<EOS
           -   brew "python"
           -   brew "cmake"
           - EOS
