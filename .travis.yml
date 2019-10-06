@@ -20,6 +20,7 @@ jobs:
       os: osx
       language: shell
       install:
+        - brew update --quiet
         - | # installing as bundle to prevent failure for existing packages
           brew bundle --file=/dev/stdin <<EOS
           brew "python"
