@@ -6,9 +6,7 @@ install:
   - cmd: >-
       echo "Downloading conan..."
       
-      set PATH=%PATH%;%PYTHON%/Scripts/
-      
-      python -m pip install -q --upgrade pip
+      choco install python3 --pre
       
       pip.exe install -q conan
       
