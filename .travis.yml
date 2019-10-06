@@ -28,7 +28,7 @@ jobs:
           brew bundle --file=/dev/stdin <<EOS
           brew "python"
           brew "cmake"
-          EOS
+        EOS
         - pip install conan # install conan, python already needed
         - cmake --version
         - conan --version
