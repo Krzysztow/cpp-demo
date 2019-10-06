@@ -5,9 +5,7 @@ clone_folder: c:\projects\source
 install:
   - cmd: >-
       echo "Downloading conan..."
-      
-      # choco install python3 --pre
-      
+            
       pip.exe install -q conan
       
       conan user
