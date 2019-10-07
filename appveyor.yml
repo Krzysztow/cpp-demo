@@ -1,5 +1,6 @@
 image:
-  - Visual Studio 2017
+  - Visual Studio 2019
+
 clone_folder: c:\projects\source
 
 install:
@@ -7,7 +8,9 @@ install:
       echo "Downloading conan..."
             
       python --version
-            
+      
+      choco list --local-only python
+
       choco install python3 --install-arguments="'/l*v c:\python3_msi_install.log'" || cat c:\python3_msi_install.log
       
       python --version
