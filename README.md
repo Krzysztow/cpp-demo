@@ -1,5 +1,5 @@
 # cpp-demo
-Checking conan and cmake with github apps
+Checking conan and cmake with github appsWARNING
 
 Windows: [![Build status](https://ci.appveyor.com/api/projects/status/f6pnc2gkfs97blvr/branch/master?svg=true)](https://ci.appveyor.com/project/Krzysztow/cpp-demo/branch/master)
 
@@ -18,7 +18,30 @@ The conan package manager is chosen as a preference although there exist differe
 
 For a discussion on comparison of the package managers, please see [this reddit here](https://www.reddit.com/r/cpp/comments/8t0ufu/what_is_a_good_package_manager_for_c/)
 
+**Notes:**
+Conan is a commcand line tool written in python. Hence, we'll have to make sure we have python (preferably version 3; version 2 is ending its life anyway).c
+
 ## Preparation of the Ubuntu machine
+You have to have administrator priviledges to execute these commands.
+
+```
+# install build tools and gcc compiler
+sudo apt install -y build-essential
+
+# install clang compiler (it's good to have choice... and we want to have option of the same compiler on different platforms)
+sudo apt install -y clang-9
+# make clang/clang++ v9 available on your path as clang/clang++
+update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 100
+update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
+
+# install CMake; we use curl to download the linux archive; cmake has apt repositories but currently none for the newest Ubuntu disco
+apt install -y curl
+curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-3.14.7-Linux-x86_64.tar.gz | \
+  tar -xzC /opt # 
+echo "Update your ~/.profile with:"
+echo "export PATH="/opt/cmake-3.14.7-Linux-x86_64/bin/:\$PATH"
+
+```
 
 ## Preparation of the Arch machine
 
@@ -26,3 +49,4 @@ For a discussion on comparison of the package managers, please see [this reddit 
 
 ## Preparation of the Windows machine
 
+## Explanation of the provided demo project structureapt install -y build-essential
