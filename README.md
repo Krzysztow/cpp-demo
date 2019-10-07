@@ -39,10 +39,11 @@ update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 100
 # install CMake; we use curl to download the linux archive; 
 # cmake has apt repositories but currently none for the newest Ubuntu disco
 apt install -y curl
-curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-3.14.7-Linux-x86_64.tar.gz | \
+CMAKE_VERSION=3.14.7-Linux-x86_64
+curl -sSL https://github.com/Kitware/CMake/releases/download/v3.14.7/cmake-${CMAKE_VERSION}.tar.gz | \
   sudo tar -xzC /opt # if installed elsewhere, no sudo might be needed 
 echo "Update your ~/.profile with:"
-echo "export PATH="/opt/cmake-3.14.7-Linux-x86_64/bin/:\$PATH"
+echo "export PATH="/opt/cmake-${CMAKE_VERSION}/bin/:\$PATH"
 
 # install conan
 pip3 install --user conan
@@ -53,7 +54,11 @@ echo "export PATH="~/.local/bin:\$PATH"
 ## building with gcc
 ```
 mkdir gcc-build && cd gcc-build
-CC=/usr/bin/gcc CXX=/usr/bin/g++ cmake --configure <path=to-the-project> -DCMAKE_BUILD_TYPE=Debug
+# configure and generate build scipts (Makefiles by default)
+CC=/usr/bin/gcc \
+  CXX=/usr/bin/g++ \
+  cmake --configure <path=to-the-project> -DCMAKE_BUILD_TYPE=Debug
+# perform the build
 cmake --build .
 # run tests
 ctest
@@ -62,7 +67,11 @@ ctest
 ## building with clang
 ```
 mkdir clang-build && cd clang-build
-CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake --configure <path=to-the-project> -DCMAKE_BUILD_TYPE=Debug
+# configure and generate build scipts (Makefiles by default)
+CC=/usr/bin/clang \
+  CXX=/usr/bin/clang++ \
+  cmake --configure <path=to-the-project> -DCMAKE_BUILD_TYPE=Debug
+# perform the build
 cmake --build .
 # run tests
 ctest
