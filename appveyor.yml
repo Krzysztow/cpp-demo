@@ -8,7 +8,7 @@ install:
             
       python --version
             
-      choco install python --version=3.7.2
+      choco install python3
       
       python --version
       
