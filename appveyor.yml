@@ -8,7 +8,7 @@ install:
             
       python --version
             
-      choco install python3
+      choco install python3 --install-arguments='/l*v c:\python3_msi_install.log' || cat c:\python3_msi_install.log
       
       python --version
       
