@@ -1,37 +1,38 @@
-image:
-  - Visual Studio 2019
-
+environment:
+  - ENV_SETUP_BAT: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat
+  - ENV_SETUP_ARG: amd64
+  
+  matrix:    
+  - TOOLCHAIN: "Visual Studio 2019 x64"
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    GENERATOR: Visual Studio 16 2019
+    
+  - TOOLCHAIN: "Visual Studio 2019 Clang/LLVM 9.0.0"
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    GENERATOR: Ninja
+    PACMAN_PACKAGES: "mingw-w64-x86_64-ninja"
+    PATH: C:\Program Files\LLVM\bin;%PATH%
+    CMAKE_ARGS: -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe
+    CLANG_URL: https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe
+    
 clone_folder: c:\projects\source
 
 install:
-  - cmd: >-
-      echo "Downloading conan..."
-            
-      python --version
-      
-      REM choco install python3
-      
-      pip --version
-      
-      python -m pip install -U pip
-      
-      pip --version
-      
-      pip install -q conan
-      
-      conan user
-      
-      conan --version
+  - echo "Downloading conan..."
+  - REM choco install python3
+  - python -m pip install -U pip
+  - pip install -q conan
+  - conan user
+  - if defined CLANG_URL appveyor DownloadFile %CLANG_URL% -FileName llvm-installer.exe
+  - if defined CLANG_URL START /WAIT llvm-installer.exe /S /D=C:\"Program Files\LLVM"
+  - cmake --version
 
 build_script:
-  - cmd: >-
-      mkdir build
-      
-      cd build
-      
-      cmake c:\projects\source -G "Visual Studio 15"
-      
-      cmake --build . --config "Debug"
+  - mkdir build
+  - cd build
+  - call "%ENV_SETUP_BAT%" %ENV_SETUP_ARG%
+  - cmake %CMAKE_ARGS% --configure -DCMAKE_BUILD_TYPE=debug -G "%GENERATOR%" c:\projects\source
+  - cmake --build . --config "Debug"
     
 test_script:
   - cmd: ctest -C Debug
