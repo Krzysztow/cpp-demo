@@ -51,7 +51,7 @@ echo "Update your ~/.profile with:"
 echo "export PATH="~/.local/bin:\$PATH"
 ```
 
-## building with gcc
+### building with gcc
 ```
 mkdir gcc-build && cd gcc-build
 # configure and generate build scipts (Makefiles by default)
@@ -64,7 +64,7 @@ cmake --build .
 ctest
 ```
 
-## building with clang
+### building with clang
 ```
 mkdir clang-build && cd clang-build
 # configure and generate build scipts (Makefiles by default)
@@ -82,5 +82,36 @@ ctest
 ## Preparation of the MacOS machine
 
 ## Preparation of the Windows machine
+### Getting compilers and cmake:
+The best option is to install the tools from the newest Visual Studio 2019. However, for this you have to make sure your Windows is updated. The installation instructions are [here](https://docs.microsoft.com/en-gb/cpp/build/vscpp-step-0-installation?view=vs-2019).
+When appropriate components are choosen (TODO: put which ones, minimal setup?) we should have msvc compiler, cmake and other tools needed.
 
-## Explanation of the provided demo project structureapt install -y build-essential
+If we want to compile using clang, we need to install it ourselves (at least for 2017, 2019 has Microsoft.VisualStudio.Component.VC.Llvm.Clang workload - TODO: double check it; that allows us to bring the newest version).
+
+To install install llvm 9.0.0 (at the moment of writing, that's the newest realease) get the installer from [here](https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe). During installation, you'll be asked for an installation location and if you want to add LLVM path to the system environment variable PATH. If you don't do it, make sure you remember that path (default `C:\Program Files\LLVM`) to add it per each compilation step.
+
+### Conan installation
+You need to make sure if Python3 is installed (best with python on the path already). Then, then on the command line follow the same steps as on linux:
+```
+REM set PATH=C:\Python37;%PATH% REM use that if PYTHON path is not set and it's installed in e.g. C:\Python37
+pip3 install conan
+conan --version
+```
+
+### building with clang
+```
+mkdir clang-build && cd clang-build
+REM make sure clang is visible on the PATH
+set PATH=C:\Program Files\LLVM\bin;%PATH%
+REM Populate build environment for appropriate target
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat -host_arch=amd64
+REM configure and generate build scipts
+cmake \
+  -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cpp.exe \
+  --configure <path=to-the-project> -DCMAKE_BUILD_TYPE=Debug
+# perform the build
+cmake --build .
+# run tests
+ctest
+```
+## Explanation of the provided demo project structure
