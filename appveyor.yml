@@ -8,12 +8,12 @@ environment:
 #  - TOOLCHAIN: "Visual Studio 2019 x64"
 #    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 #    GENERATOR: Visual Studio 16 2019
-    
+#d:/llvm/bin/    
   - TOOLCHAIN: "Visual Studio 2019 Clang/LLVM 9.0.0"
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     GENERATOR: Visual Studio 16 2019
     PATH: C:\Program Files\LLVM\bin;%PATH%
-    CMAKE_ARGS: -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cpp.exe
+    CMAKE_ARGS: -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe -DCMAKE_LINKER="lld-link.exe"
     CLANG_URL: https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe
     
 clone_folder: c:\projects\source
