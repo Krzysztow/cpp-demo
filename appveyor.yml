@@ -9,7 +9,7 @@ install:
             
       python --version
       
-      :: choco install python3
+      REM choco install python3
       
       pip --version
       
