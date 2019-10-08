@@ -22,7 +22,7 @@ install:
   - echo "Downloading conan..."
   - REM choco install python3
   - python -m pip install -U pip
-  - pip3 install -q conan
+  - pip install -q conan
   - conan user
   - if defined CLANG_URL appveyor DownloadFile %CLANG_URL% -FileName llvm-installer.exe
   - if defined CLANG_URL START /WAIT llvm-installer.exe /S /D=C:\"Program Files\LLVM"
