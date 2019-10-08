@@ -95,9 +95,25 @@ To install install llvm 9.0.0 (at the moment of writing, that's the newest reale
 ### Conan installation
 You need to make sure if Python3 is installed (best with python on the path already). Then, then on the command line follow the same steps as on linux:
 ```
-REM set PATH=C:\Python37;%PATH% REM use that if PYTHON path is not set and it's installed in e.g. C:\Python37
+REM use below if python path is not set and it's installed in e.g. C:\Python37
+REM set PATH=C:\Python37;%PATH%
 pip3 install conan
 conan --version
+```
+### building with msvc
+```
+mkdir build && cd build
+REM Populate build environment for appropriate target
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat" -host_arch=amd64
+REM configure and generate build scipts
+cmake \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -G "Visual Studio 16 2019" \
+  --configure <path=to-the-project>
+# perform the build
+cmake --build .
+# run tests
+ctest
 ```
 
 ### building with clang
