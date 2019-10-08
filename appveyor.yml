@@ -13,7 +13,7 @@ environment:
     GENERATOR: Ninja
     PACMAN_PACKAGES: "mingw-w64-x86_64-ninja"
     PATH: C:\Program Files\LLVM\bin;%PATH%
-    CMAKE_ARGS: -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cl.exe
+    CMAKE_ARGS: -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cpp.exe
     CLANG_URL: https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe
     
 clone_folder: c:\projects\source
