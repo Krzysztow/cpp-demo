@@ -80,8 +80,13 @@ ctest
 ```
 
 ## Preparation of the Arch machine
-
+ versions that may have System Integrity Protection, pip may fail. Try using virtualenvs, or install with another user $ 
 ## Preparation of the MacOS machine
+* Get XCode command line tools - https://www.embarcadero.com/starthere/xe5/mobdevsetup/ios/en/installing_the_commandline_tools.html
+* Get Brew (package manager) - https://docs.brew.sh/Installation
+* Install cmake - `brew install cmake`
+* Install conan - `python install --user conan` (potentially need to reload profile)
+TODO: verify on clean Mac
 
 ## Preparation of the Windows machine
 ### Getting compilers and cmake:
