@@ -32,6 +32,8 @@ build_script:
   - mkdir build
   - cd build
   - call "%ENV_SETUP_BAT%" %ENV_SETUP_ARG%
+  - set CC=clang-cl.exe
+  - set CXX=clang-cl.exe
   - cmake %CMAKE_ARGS% --configure -DCMAKE_BUILD_TYPE=debug -G "%GENERATOR%" c:\projects\source
   - cmake --build . --config "Debug"
     
