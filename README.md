@@ -129,10 +129,10 @@ set PATH=C:\Program Files\LLVM\bin;%PATH%
 REM Populate build environment for appropriate target
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat" -host_arch=amd64
 REM configure and generate build scipts
-cmake \
-  -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cpp.exe \
-  -DCMAKE_BUILD_TYPE=Debug \
-  -G "Visual Studio 16 2019" \
+cmake ^
+  -DCMAKE_C_COMPILER=clang-cl.exe -DCMAKE_CXX_COMPILER=clang-cpp.exe ^
+  -DCMAKE_BUILD_TYPE=Debug ^
+  -G "Visual Studio 16 2019" ^
   --configure <path=to-the-project>
 # perform the build
 cmake --build .
