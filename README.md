@@ -7,6 +7,8 @@ Linux (TODO OSX): [![Build Status](https://travis-ci.org/Krzysztow/cpp-demo.svg?
 
 # Preparation of the build environment in general
 
+To download this project, best get `git` and do `git clone <project-url>` (or use your client tool [SmartGit](https://www.syntevo.com/smartgit/), [GitKraken](https://www.gitkraken.com/), [Fork](https://git-fork.com/), [Tig](https://github.com/jonas/tig) or others).
+
 In order to be able to build this project, one has to setup his build environment. That contains of following components:
 * working C/C++ compiler (gcc/clang/msvc)
 * cmake build generator
