@@ -99,6 +99,20 @@ xcode-select --install
 echo 'export PATH=${HOME}/Library/Python/3.7/bin/:$PATH' >> ~/.profile
 . ~/.profile
 ```
+### Building the project
+```
+mkdir build && cd build
+# xcode needs to be fully aware of active SDK
+export SDKROOT=$(xcrun --show-sdk-path)
+# configure the build
+cmake \
+  -DCMAKE_BUILD_TYPE=Debug \
+  --configure <path=to-the-project>
+# perform the build
+cmake --build .
+# run tests
+ctest
+```
 
 ## Preparation of the Windows machine
 ### Getting compilers and cmake:
