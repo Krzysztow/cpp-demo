@@ -91,14 +91,33 @@ TODO: verify on clean Mac
 ## Preparation of the Windows machine
 ### Getting compilers and cmake:
 The best option is to install the tools from the newest Visual Studio 2019. However, for this you have to make sure your Windows is updated. The installation instructions are [here](https://docs.microsoft.com/en-gb/cpp/build/vscpp-step-0-installation?view=vs-2019).
-When appropriate components are choosen (TODO: put which ones, minimal setup?) we should have msvc compiler, cmake and other tools needed.
+When appropriate components are choo110
+​
+111
+To install install llvm 9.0.0 (at the moment of writing, that's the newest realease) sen (TODO: put which ones, minimal setup?) we should have msvc compiler, cmake and other tools needed.
 
-If we want to compile using clang, we need to install it ourselves (at least for 2017, 2019 has Microsoft.VisualStudio.Component.VC.Llvm.Clang workload - TODO: double check it; that allows us to bring the newest version).
-
-To install install llvm 9.0.0 (at the moment of writing, that's the newest realease) get the installer from [here](https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe). During installation, you'll be asked for an installation location and if you want to add LLVM path to the system environment variable PATH. If you don't do it, make sure you remember that path (default `C:\Program Files\LLVM`) to add it per each compilation step.
+#### Command lines
+* We use [chocolatey](https://chocolatey.org/) (package manager) to get the tools - paste a command line from [here](https://chocolatey.org/docs/installation)
+* Install MSVC compiler, Clang, CMake and other tools from the VisualStudio package:
+```
+choco install visualstudio2019buildtools --passive --force --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools;includeRecommended;includeOptional"
+```
+* If you don't want to install CMake or LLVM from VSTools, choco has new version
+```
+choco install cmake
+choco install llvm
+```
+#### Manual steps
+* Download VS Build Tools from [VS Download Page](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019). Search for "Build Tools for Visual Studio 2019" in all downloads. Run the installer - choose "C++ build tools", and "C++ CMake tools for Windows" + "C++ Clang tools for Windows" if you want to get these components from VS 
+* If we want to compile using newer version of clang, (at the momoent of writing VS ships clang 8), get the installer from [here](https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe). During installation, you'll be asked for an installation location and if you want to add LLVM path to the system environment variable PATH. If you don't do it, make sure you remember that path (default `C:\Program Files\LLVM`) to add it per each compilation step.
 
 ### Conan installation
-You need to make sure if Python3 is installed (best with python on the path already). Then, then on the command line follow the same steps as on linux:
+You need to make sure if Python3 is installed (best with python on the path already). Either from [Python download page](https://www.python.org/downloads/) or 
+```
+choco install pythono
+```
+
+Then, then on the command line follow the same steps as on linux:
 ```
 REM use below if python path is not set and it's installed in e.g. C:\Python37
 REM set PATH=C:\Python37;%PATH%
