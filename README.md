@@ -82,11 +82,23 @@ ctest
 ## Preparation of the Arch machine
  versions that may have System Integrity Protection, pip may fail. Try using virtualenvs, or install with another user $ 
 ## Preparation of the MacOS machine
-* Get XCode command line tools - https://www.embarcadero.com/starthere/xe5/mobdevsetup/ios/en/installing_the_commandline_tools.html
-* Get Brew (package manager) - https://docs.brew.sh/Installation
+* Get XCode command line tools - execute from the command line:
+```
+xcode-select --install
+```
+(or go here https://www.embarcadero.com/starthere/xe5/mobdevsetup/ios/en/installing_the_commandline_tools.html)
+* Get Brew (package manager) - https://brew.sh/
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 * Install cmake - `brew install cmake`
-* Install conan - `python install --user conan` (potentially need to reload profile)
-TODO: verify on clean Mac
+* Install python3 - `brew install python`
+* Install conan - `pip3 install --user conan` (potentially need to reload profile)
+* Restart your shell. If `conan` is not available, run the following and 
+```
+echo 'export PATH=${HOME}/Library/Python/3.7/bin/:$PATH' >> ~/.profile
+. ~/.profile
+```
 
 ## Preparation of the Windows machine
 ### Getting compilers and cmake:
